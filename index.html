@@ -3,9 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock, PAper, Scissors</title>
+    <style>
+        body {
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 800px;
+        }
+        .buttons{
+            margin: 20px;
+            display: flex;
+            gap:30px;
+            justify-content: center;
+        }
+        .choice{
+            color: white;
+            background-color: violet;
+            padding: 15px 20px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
+    <div class="buttons">
+        <button class="choice">rock</button>
+        <button class="choice">paper</button>
+        <button class="choice">scissors</button>
+    </div>
+    
+    <div class="details">
+        <div id="results"></div>
+        <div id="score"></div>
+    </div>
+    
     <script src="./script.js"> 
     </script>
 </body>

@@ -8,36 +8,37 @@ function getHumanChoice(){
     const sign = prompt("Enter your choice (rock/paper/scissors)").toLowerCase();
     return sign
 }
-    let humanScore = 0;
-    let computerScore=0;
+let humanScore = 0;
+let computerScore=0;
+function scoreUpdation(){
+    score.textContent = 'score:' + humanScore + '-' + computerScore;
+}
 function playRound(humanChoice,computerChoice){
         switch (computerChoice){
             case "rock":
-                if (humanChoice==="paper") {humanScore++; return "Paper beats rock, U win";}
-                else if (humanChoice==="scissors") {computerScore++;return "computer chose rock, U lose";}
+                if (humanChoice==="paper") {humanScore++; scoreUpdation();return "Paper beats rock, U win";}
+                else if (humanChoice==="scissors") {computerScore++;scoreUpdation();return "computer chose rock, U lose";}
                 else {return "u both chose rock, draw";}
                 break;
             case "paper":
-                if (humanChoice==="scissors") {humanScore++;return "Scissors beats paper, U win";}
-                else if (humanChoice==='rock') {computerScore++;return "computer chose paper,u lose";}
+                if (humanChoice==="scissors") {humanScore++;scoreUpdation();return "Scissors beats paper, U win";}
+                else if (humanChoice==='rock') {computerScore++;scoreUpdation();return "computer chose paper,u lose";}
                 else {return "u both chose paper, draw";}
                 break;
             case "scissors":
-                if (humanChoice==="rock") {humanScore++;return "Rock beats scissors, U win";}
-                else if (humanChoice==="paper") {computerScore++;return "computer chose scissors, u lose";}
+                if (humanChoice==="rock") {humanScore++;scoreUpdation();return "Rock beats scissors, U win";}
+                else if (humanChoice==="paper") {computerScore++;scoreUpdation();return "computer chose scissors, u lose";}
                 else { return "u both chose scissors, draw";}
                 break;
         }
+        
     }
 
-function playGame(){
-    for (let i=0; i<5;i++){
-        let computerChoice=getComputerChoice();
-        let humanChoice=getHumanChoice();
-        console.log(playRound(humanChoice,computerChoice));
-        console.log(humanScore);
-        console.log(computerScore);
-    }
+let buttons = document.querySelectorAll(".choice");
+let result = document.querySelector("#results");
+let score = document.querySelector("#score");
+buttons.forEach((button) => button.addEventListener("click",() => result.textContent=playRound(button.textContent,getComputerChoice())))
+
+
     
-}
-playGame()
+
